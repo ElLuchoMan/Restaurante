@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@micro-frontends-app/libs/web/loader": [
+        "libs/libs/web/loader/src/index.ts"
+      ],
+      "@micro-frontends-app/logical": ["libs/logical/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
