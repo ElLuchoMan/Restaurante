@@ -18,12 +18,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ComponenteLoader": [
-        "libs/libs/web/loader/src/index.ts"
-      ],
       "@ServiciosLogica": [
         "libs/logical/src/index.ts"
-      ]
+      ],
+      "@EnvironmentsShell": [
+        "apps/shell/src/environments/environment"
+      ],
     }
   },
   "exclude": [
