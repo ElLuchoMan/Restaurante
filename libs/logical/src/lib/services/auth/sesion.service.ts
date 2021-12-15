@@ -6,7 +6,7 @@ import { UtilidadesService } from "./utilidades.service";
 })
 export class SesionService {
     constructor(private utilidadesService: UtilidadesService) { }
-    //Método que permite almaenar el token de la ruta en LocalHost
+    //Permite almaenar el token de la ruta en LocalHost
     guardarJWT() {
         const id_token: string = this.utilidadesService.capturaDatosUrl('id_token', window.location.href) || "";
         const access_token: string = this.utilidadesService.capturaDatosUrl('access_token', window.location.href) || "";
@@ -15,11 +15,11 @@ export class SesionService {
         if (access_token != "") localStorage.setItem('access_token', access_token);
         if (expires_in != "") localStorage.setItem('expires_in', expires_in);
     }
-    //Método que permite consultar el token almacenado en LocalHost
+    //Permite consultar el token almacenado en LocalHost
     recuperaToken() {
         return localStorage.getItem('id_token');
     }
-    //Método que permite decodificar el token para obtener su información
+    //Permite decodificar el token para obtener su información
     decodificarToken(token: string): string {
         try {
             return jwt_decode(token);
@@ -27,12 +27,12 @@ export class SesionService {
             return 'No hay token';
         }
     }
-    //Método que permite eliminar el token almacenado en LocalHost y redireccionar a la página de logout
+    //Permite eliminar el token almacenado en LocalHost y redireccionar a la página de logout
     salida() {
         localStorage.clear();
         sessionStorage.clear();
     }
-    //Método que permite recuperar la fecha de venciemiento del token
+    //Permite recuperar la fecha de venciemiento del token
     recuperaVencimiento(token: string) {
         const decodificado: any = this.decodificarToken(token);
         if (!decodificado.exp) {
@@ -42,12 +42,12 @@ export class SesionService {
         fechaVencimiento.setUTCSeconds(decodificado.exp);
         return fechaVencimiento;
     }
-    //Método que permite validar si el token está vencido
+    //Permite validar si el token está vencido
     expirado(token?: string): boolean {
         if (!token) token = this.recuperaToken() || '';
         if (!token) return true;
         const fechaVencimiento: any = this.recuperaVencimiento(token);
         if (fechaVencimiento === undefined) return false;
-        return !(fechaVencimiento.valueOf() > new Date().valueOf());
+        return (fechaVencimiento.valueOf() >= new Date().valueOf());
     }
 }

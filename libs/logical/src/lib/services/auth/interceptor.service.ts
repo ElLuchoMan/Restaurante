@@ -1,8 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoaderService, SesionService } from '@ServiciosLogica';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root',
@@ -10,8 +9,7 @@ import { finalize, tap } from 'rxjs/operators';
 export class InterceptorService implements HttpInterceptor {
     numeroPeticiones = 0;
     constructor(
-        private router: Router,
-        private SesionService: SesionService,
+        private sesionService: SesionService,
         private loaderService: LoaderService
     ) {
     }
@@ -21,10 +19,10 @@ export class InterceptorService implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         this.numeroPeticiones++;
         this.loaderService.setMuestraCargando(true);
-        const token = this.SesionService.recuperaToken();
-        if (this.SesionService.expirado() || !token) {
+        const token = this.sesionService.recuperaToken();
+        if (this.sesionService.expirado() || !token) {
             this.loaderService.setMuestraCargando(true);
-            return throwError('Token expirado')
+            return next.handle(req);
         } else {
             const authRquest = req.clone({
                 setHeaders: {

@@ -6,7 +6,7 @@ import { LoaderService } from '@ServiciosLogica';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent {
-  textoLoader: String = 'Cargando...';
+  textoLoader: string = 'Cargando...';
   mostrar: boolean | null;
   @HostBinding('class') claseRaiz: string = '';
   constructor(private loaderService: LoaderService) {
