@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { LoaderService } from '@poc-refarl/logical';
 // import { environment } from 'apps/shell/src/environments/environment';
 @Component({
   selector: 'loader',
