@@ -1,0 +1,29 @@
+body{
+    font-family: $font-body;
+    font-size: $font-size-body;
+    color: $gray-base-color;
+}
+h1, h2, h3, p, button{
+    line-height: $line-height;
+}
+h1, h2, h3, button{
+    font-weight: 700;
+}
+h1{
+    font-size: 24px;
+    @include lg {
+        font-size: 52px;
+    }
+}
+h2{
+    font-size: 20px;
+    @include lg {
+        font-size: 44px;
+    }
+}
+button{
+    font-size: 14px;
+}
+a{
+    color: $primary-dark-color;
+}

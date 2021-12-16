@@ -1,0 +1,68 @@
+/*
+*Fonts
+*/
+$font-heading: 'Roboto Condensed', sans-serif;
+$font-body: 'Roboto Condensed', sans-serif;
+$font-size-body: 16px;
+$line-height: 140%;
+
+/*
+*Colors
+*/
+$primary-base-color: #016D38;
+$primary-dark-color: #005833;
+$primary-light-color: #02D46F;
+
+$secondary-base-color: #FFDC5D;
+$secondary-dark-color: #C9AB2A;
+$secondary-light-color: #FFF07B;
+
+$gray-base-color: #1B1B1B;
+$gray-07-color:#D9EDE4;
+$gray-06-color: #333333;
+$gray-05-color: #666666;
+$gray-04-color: #999999;
+$gray-03-color: #CCCCCC;
+$gray-02-color: #EEEEEE;
+$gray-01-color: #FBFBFB;
+
+$white-color: #FFFFFF;
+
+$info-color: #007EFF;
+$warning-color: #FFC100;
+$success-color: #28A745;
+$error-color: #DC3545;
+
+$green-gradient: linear-gradient(247.37deg, #014A26 -1.83%, #0D6122 18.72%, #128C31 111.15%);
+$green-02-gradient: linear-gradient(311.21deg, #0D6122 2.93%, #128C31 97.14%);
+$lightgreen-gradient: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 32.43%, #E5F0EB 69.16%);
+
+$white-bg-color: $white-color;
+$gray-bg-color: $gray-01-color;
+$green-bg-color: #F0F6F3;
+$yellow-bg-color: #FFF8DF;
+
+$box-shadow-xs: 0px 2px 4px rgba(51, 51, 51, 0.16);
+$box-shadow-s: 1px 4px 8px rgba(51, 51, 51, 0.16);
+$box-shadow-m: 2px 8px 16px rgba(51, 51, 51, 0.16);
+$box-shadow-l: 3px 12px 24px rgba(51, 51, 51, 0.16);
+
+$inner-box-shadow-s: inset 2px 2px 8px rgba(0, 0, 0, 0.3);
+$inner-box-shadow-xs: inset 0px 1px 2px rgba(0, 0, 0, 0.249563);
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 360px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 1366px;
+
+// Large tablets and desktops
+$screen-xl-min: 1920px;
+
+//Custom variables
+$border-light-color: $gray-03-color;
+
+

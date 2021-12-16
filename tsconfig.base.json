@@ -10,25 +10,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@ServiciosLogica": [
-        "libs/logical/src/index.ts"
-      ],
-      "@EnvironmentsShell": [
-        "apps/shell/src/environments/environment"
-      ]
+      "@EnvironmentsShell": ["apps/shell/src/environments/environment"],
+      "@ServiciosLogica": ["libs/logical/src/index.ts"]
     },
     "baseUrl": "."
-
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

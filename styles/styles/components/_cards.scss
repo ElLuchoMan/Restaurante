@@ -1,0 +1,29 @@
+.card{
+    box-shadow: $box-shadow-l;
+    background-color: $white-bg-color;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include element('card-header') {
+        h2{
+            font-size: 20px;
+            color: $primary-dark-color;
+        }
+    }
+    @include element('card-body') {
+        padding: 14px;
+        flex: 1 1 auto;
+        
+    }
+    @include element('card-footer') {
+        text-align: center;
+        padding: 16px 8px;
+        .button{
+            margin-bottom: 10px;
+        }
+        .button:not(:last-child){
+            margin-right: 24px;
+        }
+    }
+}
