@@ -1,17 +1,19 @@
 {
   "version": 1,
   "projects": {
-    "libs-web-loader": {
+    "data-store": {
       "projectType": "library",
-      "root": "libs/libs/web/loader",
-      "sourceRoot": "libs/libs/web/loader/src",
-      "prefix": "micro-frontends-app",
+      "root": "libs/data-store",
+      "sourceRoot": "libs/data-store/src",
+      "prefix": "restaurante",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/libs/web/loader"],
+          "outputs": [
+            "coverage/libs/data-store"
+          ],
           "options": {
-            "jestConfig": "libs/libs/web/loader/jest.config.js",
+            "jestConfig": "libs/data-store/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -19,34 +21,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/libs/web/loader/src/**/*.ts",
-              "libs/libs/web/loader/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "logical": {
-      "projectType": "library",
-      "root": "libs/logical",
-      "sourceRoot": "libs/logical/src",
-      "prefix": "micro-frontends-app",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/logical"],
-          "options": {
-            "jestConfig": "libs/logical/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/logical/src/**/*.ts",
-              "libs/logical/src/**/*.html"
+              "libs/data-store/src/**/*.ts",
+              "libs/data-store/src/**/*.html"
             ]
           }
         }
@@ -57,11 +33,13 @@
       "projectType": "application",
       "root": "apps/login",
       "sourceRoot": "apps/login/src",
-      "prefix": "micro-frontends-app",
+      "prefix": "restaurante",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/login",
             "index": "apps/login/src/index.html",
@@ -69,9 +47,18 @@
             "polyfills": "apps/login/src/polyfills.ts",
             "tsConfig": "apps/login/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/login/src/favicon.ico", "apps/login/src/assets"],
-            "styles": ["apps/login/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/login/src/favicon.ico",
+              "apps/login/src/assets"
+            ],
+            "styles": [
+              "apps/login/src/styles.scss"
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/login/webpack.config.js"
+            },
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -93,7 +80,10 @@
                   "with": "apps/login/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/login/webpack.prod.config.js"
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -107,7 +97,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@nrwl/angular:webpack-server",
           "configurations": {
             "production": {
               "browserTarget": "login:build:production"
@@ -116,12 +106,17 @@
               "browserTarget": "login:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4201,
+            "publicHost": "http://localhost:4201"
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "login:build"
+            "browserTarget": "login:build",
+            "extraWebpackConfig": "apps/login/webpack.config.js"
           }
         },
         "lint": {
@@ -135,7 +130,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/login"],
+          "outputs": [
+            "coverage/apps/login"
+          ],
           "options": {
             "jestConfig": "apps/login/jest.config.js",
             "passWithNoTests": true
@@ -163,24 +160,32 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/login-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/login-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["login"]
+      "implicitDependencies": [
+        "login"
+      ]
     },
     "shell": {
       "projectType": "application",
       "root": "apps/shell",
       "sourceRoot": "apps/shell/src",
-      "prefix": "micro-frontends-app",
+      "prefix": "restaurante",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -188,9 +193,18 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/shell/webpack.config.js"
+            },
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -212,7 +226,10 @@
                   "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/shell/webpack.prod.config.js"
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -226,7 +243,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@nrwl/angular:webpack-server",
           "configurations": {
             "production": {
               "browserTarget": "shell:build:production"
@@ -235,12 +252,17 @@
               "browserTarget": "shell:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4200,
+            "publicHost": "http://localhost:4200"
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "shell:build",
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         },
         "lint": {
@@ -254,7 +276,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/shell"],
+          "outputs": [
+            "coverage/apps/shell"
+          ],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
             "passWithNoTests": true
@@ -282,14 +306,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/shell-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["shell"]
+      "implicitDependencies": [
+        "shell"
+      ]
     }
   }
 }

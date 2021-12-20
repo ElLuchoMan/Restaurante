@@ -1,5 +1,5 @@
 {
-  "npmScope": "micro-frontends-app",
+  "npmScope": "restaurante",
   "affected": {
     "defaultBase": "master"
   },
@@ -16,9 +16,15 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "ZTUxOWIwZTEtYjVlYi00MmUwLWFiNzItMWVlYmYxNTYxYWI1fHJlYWQtd3JpdGU="
       }
     }
   },
@@ -38,7 +44,6 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest"
     },

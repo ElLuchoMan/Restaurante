@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'micro-frontends-app-root',
+  selector: 'restaurante-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

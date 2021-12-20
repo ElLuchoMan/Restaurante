@@ -8,16 +8,29 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@EnvironmentsShell": ["apps/shell/src/environments/environment"],
-      "@ServiciosLogica": ["libs/logical/src/index.ts"]
-    },
-    "baseUrl": "."
+      "@restaurante/data-store": [
+        "libs/data-store/src/index.ts"
+      ],
+      "@EnvironmentsShell": [
+        "apps/shell/src/environments/environment"
+      ],
+      "@ServiciosLogica": [
+        "libs/logical/src/index.ts"
+      ]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
